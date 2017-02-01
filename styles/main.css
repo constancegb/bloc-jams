@@ -51,3 +51,12 @@ body {
     left: 2rem;
 }
 
+.clearfix::before,
+.clearfix::after {
+   content: " ";
+   display: table;
+}
+
+.clearfix::after {
+   clear: both;
+}
