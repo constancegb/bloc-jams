@@ -48,6 +48,7 @@ body {
      background-color: rgba(101,18,95,0.5);
      /* #2 */
      z-index: 1;
+    height: 100px;
 }
 
 .navbar .logo {
@@ -90,6 +91,11 @@ body {
  .links-container .navbar-link:hover {
      color: rgb(233,50,117);
  }
+
+.links-container .navbar-link:active {
+    color: rgb(233,50,117);
+    background-color: white;
+}
 
 .clearfix::before,
 .clearfix::after {
