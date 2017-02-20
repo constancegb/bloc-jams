@@ -29,6 +29,21 @@ var albumPicasso = {
      ]
  };
 
+ var albumWonder = {
+     title: 'Wondering',
+     artist: 'Stevie Wonder',
+     label: 'HWW',
+     year: '1980',
+     albumArtUrl: 'assets/images/album_covers/02.png',
+     songs: [
+         { title: 'Superstition', duration: '3:01' },
+         { title: 'Blind', duration: '2:53' },
+         { title: 'Master Blaster', duration: '4:28'},
+         { title: 'Stars', duration: '2:41' },
+         { title: 'Plane', duration: '4:15'}
+     ]
+ };
+
 
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
@@ -42,13 +57,13 @@ var albumPicasso = {
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
+
+var setCurrentAlbum = function(album) {
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -63,4 +78,14 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+    
+     var index = 1;
+     var albums = [albumPicasso, albumMarconi, albumWonder];
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(albums[index]);
+         index++;
+         if (index == albums.length){
+             index = 0;
+         }                   
+      });
  };
