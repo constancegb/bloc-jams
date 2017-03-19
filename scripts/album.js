@@ -70,26 +70,22 @@ var findParentByClassName = function (element, targetClass) {
 
 
 //take an element and, based on that element's class name(s), use a switch statement that returns the element with the .song-item-number class.
-var getSongItem = function (element) {
-    switch(element.className) {
-    case 'album-view-song-item': // table row
-        return element.querySelector('song-item-number');
-        break;
-    case 'song-item-number': // element himself
-        return element;
-        break;
-    case 'song-item-title': // parents's child1
-    case 'song-item-duration': // parent's child2
-        return findParentByClassName(element, 'album-view-song-item').querySelector('song-item-number');
-        break;
-    case 'album-song-button': // child1
-    case 'ion-play': // child2
-    case 'ion-pause': // child3
-        return findParentByClassName(element, 'song-item-number');
-        break;
-    default:
-        return;
-    }
+var getSongItem = function(element) {
+    switch (element.className) {
+        case 'album-song-button': // child1
+        case 'ion-play': // child2
+        case 'ion-pause': // child3
+            return findParentByClassName(element, 'song-item-number');
+        case 'album-view-song-item': // table row
+            return element.querySelector('.song-item-number');
+        case 'song-item-title': // parents's child1
+        case 'song-item-duration': // parent's child2
+            return findParentByClassName(element, 'album-view-song-item').querySelector('.song-item-number');
+        case 'song-item-number': // element himself
+            return element; 
+        default:
+            return;
+    }  
 };
 
 var clickHandler = function(targetElement) {
